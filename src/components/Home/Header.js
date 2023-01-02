@@ -4,7 +4,7 @@ import HeroContent from './HeroContent'
 
 const Header = () => {
   return (
-    <div className='bg-red-50'>
+    <div className='bg-red-50 w-screen overflow-hidden '>
       <HeaderNav />
       <HeroContent />
     </div>

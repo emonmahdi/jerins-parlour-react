@@ -1,0 +1,23 @@
+[
+    {
+        "id": 1,
+        "title": "Anti Ago Face Treatment",
+        "img": "https://i.ibb.co/2k3Hs5D/service-1.png",
+        "price": "199",
+        "description": "We craft stunning and amazing web UI."
+    },
+    {
+        "id": 2,
+        "title": "Hair color and styling",
+        "img": "https://i.ibb.co/FqYNcW6/service-3.png",
+        "price": "99",
+        "description": "We craft stunning and amazing web UI."
+    },
+    {
+        "id": 3,
+        "title": "Skin care Treatment",
+        "img": "https://i.ibb.co/swFhcJG/service-2.png",
+        "price": "299",
+        "description": "We craft stunning and amazing web UI."
+    }
+]
