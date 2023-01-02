@@ -48,8 +48,8 @@ const HeaderNav = () => {
       <div className="navbar-center ">
        
       </div>
-      <div className="navbar-end lg:flex">
-      <ul className="menu menu-horizontal hidden px-1">
+      <div className="navbar-end">
+      <ul className="menu menu-horizontal px-1 hidden lg:flex">
           <li>
             <a>Home</a>
           </li> 

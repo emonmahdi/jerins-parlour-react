@@ -15,7 +15,7 @@ const HeroContent = () => {
                 assumenda excepturi exercitationem quasi. In deleniti eaque aut
                 repudiandae et a id nisi.
               </p>
-              <button className="btn btn-primary">Get Started</button>
+              <button className="btn btn-primary">Get an Appointment</button>
             </div>
             <div className="text-end"> 
               <img src={heroImg} className="max-w-sm h-[500] rounded-lg shadow-2xl mx-auto" />
