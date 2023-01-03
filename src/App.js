@@ -1,22 +1,16 @@
-import './App.css';
-import About from './components/Home/About';
-import Contact from './components/Home/Contact';
-import Header from './components/Home/Header';
-import Services from './components/Home/Services';
-import Testimonial from './components/Home/Testimonial';
-import Footer from './shared/Footer';
-import HeaderNav from './shared/HeaderNav';
+import { Route, Routes } from 'react-router-dom';
+import './App.css'; 
+import Home from './components/Home/Home'; 
+import Login from './Pages/Auth/Login'; 
+import Register from './Pages/Auth/Register';
 
 function App() {
-  return (
-    <div>  
-      <Header />
-      <Services />
-      <About />
-      <Testimonial />
-      <Contact />
-      <Footer />
-    </div>
+  return ( 
+      <Routes>
+        <Route path='/' element={<Home />} />
+        <Route path='/login' element={<Login />} />
+        <Route path='/register' element={<Register />} />
+      </Routes>  
   );
 }
 

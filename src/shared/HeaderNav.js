@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 import logoImg from '../Assets/logo.png'
 
@@ -28,7 +29,7 @@ const HeaderNav = () => {
             className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52 ml-auto"
           >
             <li>
-              <a>Home</a>
+              <Link to='/'>Home</Link> 
             </li>
             <li>
               <a>Our Portfolio</a>
@@ -42,7 +43,9 @@ const HeaderNav = () => {
           </ul>
         </div>
         <a className="btn btn-ghost normal-case text-xl">
-            <img className="w-32" src={logoImg} alt="jerins perlour" />
+           <Link to='/'>
+              <img className="w-32" src={logoImg} alt="jerins perlour" />
+            </Link> 
         </a>
       </div>
       <div className="navbar-center ">
@@ -51,7 +54,7 @@ const HeaderNav = () => {
       <div className="navbar-end">
       <ul className="menu menu-horizontal px-1 hidden lg:flex">
           <li>
-            <a>Home</a>
+            <Link to='/'>Home</Link> 
           </li> 
           <li>
             <a>Our Portfolio</a>
@@ -63,7 +66,9 @@ const HeaderNav = () => {
             <a>Contact Us</a>
           </li>
         </ul>
-        <a className="btn bg-primary text-accent border-0 px-10">Login</a>
+        <Link to='/register'>
+           <a className="btn bg-primary text-accent border-0 px-10">Login</a>
+        </Link> 
       </div>
     </div>
   );
