@@ -1,33 +1,90 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import HeaderNav from "../../shared/HeaderNav";
 import * as FaIcons from 'react-icons/fa';
 import * as FcIcons from 'react-icons/fc';
+import { useCreateUserWithEmailAndPassword, useSignInWithGoogle } from "react-firebase-hooks/auth";
+import auth from "../../firebase.init";
+import Loading from "../../shared/Loading";
 
 const Register = () => {
+  const [signInWithGoogle, gUser, gLoading, gError] = useSignInWithGoogle(auth);
+  const [
+    createUserWithEmailAndPassword,
+    user,
+    loading,
+    error,
+  ] = useCreateUserWithEmailAndPassword(auth);
+
+    const navigate = useNavigate();
+
+    const [fname,setFname] = useState('')
+    const [lname,setLname] = useState('')
+    const [email,setEmail] = useState('')
+    const [password,setPassword] = useState('')
+    const [rePassword,setRePassword] = useState('')
+    
+
+    const [passError, setPassError] = useState('')
+
+    let errorElement;
+    if (error || gUser) {
+        return  errorElement =  <p className='text-red-500'>Error: {error.message}</p>
+           
+      }
+    if(user || gUser){
+        navigate('/');
+        console.log(user);
+    }
+    if(loading){
+        return <Loading />
+    }
+ 
+    let errorPass = <p className="text-red-500 font-bold">Password does not match</p>
+
+    const handleSubmit =(e) => {
+      e.preventDefault();
+      const userAccount = {
+        fname,
+        lname,
+        email,
+        password,
+        rePassword
+      }
+      if(password === rePassword){
+        createUserWithEmailAndPassword(email, password);
+      }else{
+        setPassError(errorPass);
+      }
+      console.log(userAccount);
+    }
+
+
+
   return (
     <div>
       <HeaderNav />
       <div className="w-1/3 mx-auto border p-8 overflow-hidden">
 
       
-      <form>
-        <h3 className="text-2xl font-bold mb-4">Create an account</h3>
+      <form onSubmit={handleSubmit}>
+        <h3 className="text-2xl font-bold mb-4">Create an account {user?.email}</h3>
         <div>
-          <input type="text" name="fname" className="w-full border-b-2 px-2 py-2 mb-4 outline-0" placeholder="First Name" />
+          <input type="text" name="fname" onChange={(e) => setFname(e.target.value)} className="w-full border-b-2 px-2 py-2 mb-4 outline-0" placeholder="First Name" />
         </div>
         <div>
-          <input type="text" className="w-full border-b-2 px-2 py-2 mb-4 outline-0" placeholder="Last Name" />
+          <input type="text" name="lname" onChange={(e) => setLname(e.target.value)} className="w-full border-b-2 px-2 py-2 mb-4 outline-0" placeholder="Last Name" />
         </div>
         <div>
-          <input type="email" className="w-full border-b-2 px-2 py-2 mb-4 outline-0" placeholder="Username or email" />
+          <input type="email" name="email" onChange={(e) => setEmail(e.target.value)} className="w-full border-b-2 px-2 py-2 mb-4 outline-0" placeholder="Username or email" />
         </div>
         <div>
-          <input type="password" className="w-full border-b-2 px-2 py-2 mb-4 outline-0" placeholder="Password" />
+          <input type="password" name="password" onChange={(e) => setPassword(e.target.value)} className="w-full border-b-2 px-2 py-2 mb-4 outline-0" placeholder="Password" />
         </div>
         <div>
-          <input type="password" className="w-full border-b-2 px-2 py-2 mb-4 outline-0" placeholder="Confirm Password" />
+          <input type="password" name="repassword" onChange={(e) => setRePassword(e.target.value)} className="w-full border-b-2 px-2 py-2 mb-4 outline-0" placeholder="Confirm Password" />
         </div>
+        {passError}
         <div>
           <input
             type="submit"
@@ -42,13 +99,13 @@ const Register = () => {
         </div>
       </form>
       <div className="social-login">
-        <button className="w-full flex items-center justify-center border border-slate-500 rounded-full p-2 my-2 hover:bg-primary hover:text-white"> 
+        <button  className="w-full flex items-center justify-center border border-slate-500 rounded-full p-2 my-2 hover:bg-primary hover:text-white"> 
             <FaIcons.FaFacebook className="mr-2 text-sky-600" />
-             Continue with Google
+             Continue with Facebook
         </button>
-        <button className="w-full flex items-center justify-center border border-slate-500 rounded-full p-2 my-2 hover:bg-primary hover:text-white"> 
+        <button onClick={() => signInWithGoogle()} className="w-full flex items-center justify-center border border-slate-500 rounded-full p-2 my-2 hover:bg-primary hover:text-white"> 
             <FcIcons.FcGoogle className="mr-2" />
-            Continue with Facebook
+            Continue with Google 
         </button> 
       </div>
       </div>

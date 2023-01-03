@@ -19,22 +19,22 @@ const Contact = () => {
     <div className="contact-form mx-auto w-2/4">
         <div className='flex w-full gap-4'>
             <div className='w-2/4'>
-                <input type="text" placeholder="First Name" class="input w-full" />
+                <input type="text" placeholder="First Name" className="input w-full" />
             </div> 
             <div className='w-2/4'>
-                <input type="text" placeholder="Last Name" class="input w-full" />
+                <input type="text" placeholder="Last Name" className="input w-full" />
             </div> 
         </div>
         <div className='flex gap-4 mt-4'>
             <div className='w-2/4'>
-                <input type="email" placeholder="Email Address" class="input w-full" />
+                <input type="email" placeholder="Email Address" className="input w-full" />
             </div> 
             <div className='w-2/4'>
-                <input type="text" placeholder="Phone Number" class="input w-full" />
+                <input type="text" placeholder="Phone Number" className="input w-full" />
             </div> 
         </div>
         <div className='mt-4'>
-            <textarea class="textarea w-full h-48" placeholder="Bio"></textarea>
+            <textarea className="textarea w-full h-48" placeholder="Bio"></textarea>
         </div>
         <div className='text-center mt-4'>
             <input type="submit" value='Send Message' className='btn btn-primary text-white' />

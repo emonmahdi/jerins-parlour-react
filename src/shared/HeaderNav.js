@@ -1,9 +1,18 @@
 import React from "react";
+import { useAuthState, useSignOut } from "react-firebase-hooks/auth";
 import { Link } from "react-router-dom";
 
 import logoImg from '../Assets/logo.png'
+import auth from "../firebase.init";
 
 const HeaderNav = () => {
+  const [user] = useAuthState(auth);
+  const [signOut] = useSignOut(auth);
+
+  const handleSignOut = () => {
+    signOut();
+  }
+
   return (
     <div className="navbar container mx-auto">
       <div className="navbar-start ">
@@ -66,9 +75,19 @@ const HeaderNav = () => {
             <a>Contact Us</a>
           </li>
         </ul>
-        <Link to='/register'>
-           <a className="btn bg-primary text-accent border-0 px-10">Login</a>
-        </Link> 
+        
+        {
+          user ? 
+          ( <>
+            
+          <button onClick={handleSignOut} className="btn btn-md bg-primary text-accent border-0 px-10">Log Out</button>
+          {/* <span>{user?.displayName}</span> */}
+          </>
+          ) :
+          <Link to='/register'>
+            <a className="btn bg-primary text-accent border-0 px-10">Login</a>
+          </Link> 
+        } 
       </div>
     </div>
   );
