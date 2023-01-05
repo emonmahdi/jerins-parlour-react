@@ -34,7 +34,7 @@ const Contact = () => {
             </div> 
         </div>
         <div className='mt-4'>
-            <textarea className="textarea w-full h-48" placeholder="Bio"></textarea>
+            <textarea className="textarea w-full h-48" placeholder="Message"></textarea>
         </div>
         <div className='text-center mt-4'>
             <input type="submit" value='Send Message' className='btn btn-primary text-white' />

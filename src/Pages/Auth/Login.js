@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Link, useNavigate } from 'react-router-dom' 
+import { Link, useLocation, useNavigate } from 'react-router-dom' 
 import logo from '../../Assets/logo.png'
 import * as FcIcons from 'react-icons/fc';
 import { useSignInWithEmailAndPassword, useSignInWithGoogle } from 'react-firebase-hooks/auth';
@@ -18,14 +18,16 @@ const Login = () => {
     const navigate = useNavigate();
     const [email,setEmail] = useState('')
     const [password,setPassword] = useState('')
-    
+    const location = useLocation();
+    const from = location?.state?.from?.pathname || "/";  
+
     let errorElement;
     if (error || gError) {
        errorElement =  <p className='text-red-500'>Error: {error.message}</p>
            
       }
     if(user || gUser){
-        navigate('/');
+        navigate(from, {replace: true});
         console.log(user);
     }
     if(loading || gLoading){

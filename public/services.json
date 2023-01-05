@@ -1,23 +1,38 @@
 [
     {
-        "id": 1,
         "title": "Anti Ago Face Treatment",
         "img": "https://i.ibb.co/2k3Hs5D/service-1.png",
         "price": "199",
         "description": "We craft stunning and amazing web UI, using a well drrafted UX to fit your product."
     },
     {
-        "id": 2,
         "title": "Hair color and styling",
         "img": "https://i.ibb.co/FqYNcW6/service-3.png",
         "price": "99",
         "description": "Amazing flyers, social media posts and brand representations that would make your brand stand out."
     },
     {
-        "id": 3,
         "title": "Skin care Treatment",
         "img": "https://i.ibb.co/swFhcJG/service-2.png",
         "price": "299",
+        "description": "With well written codes, we build amazing apps for all platforms, mobile and web apps in general."
+    },
+    {
+        "title": "Removal of extra hair.",
+        "img": "https://i.ibb.co/2k3Hs5D/service-1.png",
+        "price": "79",
+        "description": "With well written codes, we build amazing apps for all platforms, mobile and web apps in general."
+    },
+    {
+        "title": "Skin Care and Make up.",
+        "img": "https://i.ibb.co/swFhcJG/service-2.png",
+        "price": "59",
+        "description": "With well written codes, we build amazing apps for all platforms, mobile and web apps in general."
+    },
+    {
+        "title": "Manicure and pedicure",
+        "img": "https://i.ibb.co/FqYNcW6/service-3.png",
+        "price": "119",
         "description": "With well written codes, we build amazing apps for all platforms, mobile and web apps in general."
     }
 ]

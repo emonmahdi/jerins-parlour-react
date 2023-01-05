@@ -4,6 +4,7 @@ import HeaderNav from "../../shared/HeaderNav";
 import * as FaIcons from 'react-icons/fa';
 import * as FcIcons from 'react-icons/fc';
 import { useCreateUserWithEmailAndPassword, useSignInWithGoogle } from "react-firebase-hooks/auth";
+import { useUpdateProfile } from 'react-firebase-hooks/auth';
 import auth from "../../firebase.init";
 import Loading from "../../shared/Loading";
 
@@ -15,35 +16,36 @@ const Register = () => {
     loading,
     error,
   ] = useCreateUserWithEmailAndPassword(auth);
+    const [updateProfile, updating, updateError] = useUpdateProfile(auth);
 
     const navigate = useNavigate();
 
-    const [fname,setFname] = useState('')
-    const [lname,setLname] = useState('')
-    const [email,setEmail] = useState('')
-    const [password,setPassword] = useState('')
-    const [rePassword,setRePassword] = useState('')
+    const [fname, setFname] = useState('')
+    const [lname, setLname] = useState('')
+    const [email, setEmail] = useState('')
+    const [password, setPassword] = useState('')
+    const [rePassword, setRePassword] = useState('')
     
 
     const [passError, setPassError] = useState('')
 
     let errorElement;
-    if (error || gUser) {
+    if (error || gError || updateError) {
         return  errorElement =  <p className='text-red-500'>Error: {error.message}</p>
            
       }
     if(user || gUser){
-        navigate('/');
-        console.log(user);
+        navigate('/'); 
     }
-    if(loading){
+    if(loading || updating || gLoading){
         return <Loading />
     }
  
     let errorPass = <p className="text-red-500 font-bold">Password does not match</p>
 
-    const handleSubmit =(e) => {
+    const handleSubmit = async(e) => {
       e.preventDefault();
+      const name = `${fname} ${lname}`;
       const userAccount = {
         fname,
         lname,
@@ -52,7 +54,11 @@ const Register = () => {
         rePassword
       }
       if(password === rePassword){
-        createUserWithEmailAndPassword(email, password);
+        await createUserWithEmailAndPassword(email, password);
+        
+        await  updateProfile({displayName: name});
+        console.log('update profile')
+        
       }else{
         setPassError(errorPass);
       }
